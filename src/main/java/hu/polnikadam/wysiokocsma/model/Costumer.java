@@ -48,7 +48,7 @@ public class Costumer {
         return liverStrength;
     }
 
-    public int isBicepsSize() {
+    public int getBicepsSize() {
         return bicepsSize;
     }
 }
