@@ -16,15 +16,15 @@ public class Fight {
     private Date  fightEnd;
     @ManyToMany
     @Column(name = "Fighters")
-    private List<Costumer> fighters;
+    private List<Customer> fighters;
     @ManyToMany
     @Column(name = "Winner")
-    private List<Costumer> winner;
+    private List<Customer> winner;
 
     public Fight() {
     }
 
-    public Fight(Date fightStart, Date fightEnd, List<Costumer> fighters, List<Costumer> winner) {
+    public Fight(Date fightStart, Date fightEnd, List<Customer> fighters, List<Customer> winner) {
         this.fightStart = fightStart;
         this.fightEnd = fightEnd;
         this.fighters = fighters;
@@ -39,11 +39,11 @@ public class Fight {
         this.fightEnd = fightEnd;
     }
 
-    public void setFighters(List<Costumer> fighters) {
+    public void setFighters(List<Customer> fighters) {
         this.fighters = fighters;
     }
 
-    public void setWinner(List<Costumer> winner) {
+    public void setWinner(List<Customer> winner) {
         this.winner = winner;
     }
 
@@ -59,11 +59,11 @@ public class Fight {
         return fightEnd;
     }
 
-    public List<Costumer> getFighters() {
+    public List<Customer> getFighters() {
         return fighters;
     }
 
-    public List<Costumer> getWinner() {
+    public List<Customer> getWinner() {
         return winner;
     }
 }

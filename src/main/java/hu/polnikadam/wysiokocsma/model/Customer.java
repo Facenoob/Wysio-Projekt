@@ -3,8 +3,8 @@ package hu.polnikadam.wysiokocsma.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Costumers")
-public class Costumer {
+@Table(name = "Costomers")
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -15,10 +15,10 @@ public class Costumer {
     @Column(name = "BicepSize")
     private int  bicepsSize;
 
-    public Costumer() {
+    public Customer() {
     }
 
-    public Costumer(String name, LiverStrength liverStrength, int bicepsSize) {
+    public Customer(String name, LiverStrength liverStrength, int bicepsSize) {
         this.name = name;
         this.liverStrength = liverStrength;
         this.bicepsSize = bicepsSize;
