@@ -10,20 +10,21 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 public class Customer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column
 
+    @Column
     @NonNull
     private String name;
-    @Column
 
+    @Column
     @NonNull
     private LiverStrength liverStrength;
-    @Column
 
+    @Column
     @NonNull
-    private int  bicepsSize;
+    private int bicepsSize;
 
 }
