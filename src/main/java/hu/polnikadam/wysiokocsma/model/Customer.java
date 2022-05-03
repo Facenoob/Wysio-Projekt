@@ -6,25 +6,23 @@ import javax.persistence.*;
 
 @Entity
 @Table
-@RequiredArgsConstructor()
+@RequiredArgsConstructor
 @NoArgsConstructor
+@Data
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column
-    @Getter
-    @Setter
+
     @NonNull
     private String name;
     @Column
-    @Getter
-    @Setter
+
     @NonNull
     private LiverStrength liverStrength;
     @Column
-    @Getter
-    @Setter
+
     @NonNull
     private int  bicepsSize;
 
