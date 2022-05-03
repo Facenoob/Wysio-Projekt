@@ -11,20 +11,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:8080")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/customers")
 public class CustomerController {
     @Autowired
-    CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 
-    @GetMapping("/costomers")
-    public ResponseEntity<List<Customer>> getAllCostumer(@RequestParam(required = false) String name) {
+    @GetMapping("/all")
+    public ResponseEntity<List<Customer>> getAllCustomer() {
         try {
-            List<Customer> customers = new ArrayList<Customer>();
-            if (name == null)
-                customerRepository.findAll().forEach(customers::add);
-
+            List<Customer> customers = new ArrayList<>();
+            customers.addAll(customerRepository.findAll());
             if (customers.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
@@ -34,17 +31,17 @@ public class CustomerController {
         }
 
     }
-    @GetMapping("/costomers/{id}")
-    public ResponseEntity<Customer> getCostumerById(@PathVariable("id") long id) {
-        Optional<Customer> costomerData = customerRepository.findById(id);
-        if (costomerData.isPresent()) {
-            return new ResponseEntity<>(costomerData.get(), HttpStatus.OK);
+    @GetMapping("/{id}")
+    public ResponseEntity<Customer> getCustomerById(@PathVariable("id") long id) {
+        Optional<Customer> customerData = customerRepository.findById(id);
+        if (customerData.isPresent()) {
+            return new ResponseEntity<>(customerData.get(), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @PostMapping("/costomers")
-    public ResponseEntity<Customer> createCostumer(@RequestBody Customer customer) {
+    @PostMapping("/")
+    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
         try {
             Customer _customer = customerRepository
                     .save(new Customer(customer.getName(), customer.getLiverStrength(), customer.getBicepsSize()));
@@ -53,11 +50,11 @@ public class CustomerController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @PutMapping("/costomers/{id}")
-    public ResponseEntity<Customer> updateCostumer(@PathVariable("id") long id, @RequestBody Customer customer) {
-        Optional<Customer> costomerData = customerRepository.findById(id);
-        if (costomerData.isPresent()) {
-            Customer _customer = costomerData.get();
+    @PutMapping("/{id}")
+    public ResponseEntity<Customer> updateCustomer(@PathVariable("id") long id, @RequestBody Customer customer) {
+        Optional<Customer> customerData = customerRepository.findById(id);
+        if (customerData.isPresent()) {
+            Customer _customer = customerData.get();
             _customer.setName(customer.getName());
             _customer.setLiverStrength(customer.getLiverStrength());
             _customer.setBicepsSize(customer.getBicepsSize());
@@ -66,7 +63,7 @@ public class CustomerController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @DeleteMapping("/costomers/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
         try {
             customerRepository.deleteById(id);
@@ -75,7 +72,7 @@ public class CustomerController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @DeleteMapping("/costomers")
+    @DeleteMapping("/")
     public ResponseEntity<HttpStatus> deleteAllTutorials() {
         try {
             customerRepository.deleteAll();

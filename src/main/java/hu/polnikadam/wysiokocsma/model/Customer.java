@@ -1,54 +1,31 @@
 package hu.polnikadam.wysiokocsma.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Costomers")
+@Table
+@RequiredArgsConstructor()
+@NoArgsConstructor
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(name = "Name")
+    @Column
+    @Getter
+    @Setter
+    @NonNull
     private String name;
-    @Column(name ="LiverStrength")
+    @Column
+    @Getter
+    @Setter
+    @NonNull
     private LiverStrength liverStrength;
-    @Column(name = "BicepSize")
+    @Column
+    @Getter
+    @Setter
+    @NonNull
     private int  bicepsSize;
 
-    public Customer() {
-    }
-
-    public Customer(String name, LiverStrength liverStrength, int bicepsSize) {
-        this.name = name;
-        this.liverStrength = liverStrength;
-        this.bicepsSize = bicepsSize;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLiverStrength(LiverStrength liverStrength) {
-        this.liverStrength = liverStrength;
-    }
-
-    public void setBicepsSize(int bicepsSize) {
-        this.bicepsSize = bicepsSize;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public LiverStrength getLiverStrength() {
-        return liverStrength;
-    }
-
-    public int getBicepsSize() {
-        return bicepsSize;
-    }
 }
