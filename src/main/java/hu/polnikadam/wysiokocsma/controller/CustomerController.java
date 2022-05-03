@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerController {
+
     @Autowired
     private CustomerRepository customerRepository;
 
@@ -31,6 +32,7 @@ public class CustomerController {
         }
 
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable("id") long id) {
         Optional<Customer> customerData = customerRepository.findById(id);
@@ -40,16 +42,23 @@ public class CustomerController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
     @PostMapping("/")
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customerToSave) {
         try {
-            Customer customer = customerRepository
-                    .save(new Customer(customerToSave.getName(), customerToSave.getLiverStrength(), customerToSave.getBicepsSize()));
+            Customer customer = new Customer();
+
+            customer.setName(customerToSave.getName());
+            customer.setBicepsSize(customerToSave.getBicepsSize());
+            customer.setLiverStrength(customerToSave.getLiverStrength());
+
+            customerRepository.save(customer);
             return new ResponseEntity<>(customer, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @PutMapping("/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable("id") long id, @RequestBody Customer customerToUpdate) {
         Optional<Customer> customerData = customerRepository.findById(id);
@@ -63,6 +72,7 @@ public class CustomerController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteCustomer(@PathVariable("id") long id) {
         try {
@@ -72,6 +82,7 @@ public class CustomerController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @DeleteMapping("/")
     public ResponseEntity<HttpStatus> deleteAllCustomer() {
         try {

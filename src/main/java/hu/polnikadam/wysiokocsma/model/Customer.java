@@ -1,7 +1,8 @@
 package hu.polnikadam.wysiokocsma.model;
 
-import lombok.*;
 
+import lombok.*;
+import javax.validation.constraints.NotNull;
 import javax.persistence.*;
 
 @Entity
@@ -16,15 +17,15 @@ public class Customer {
     private long id;
 
     @Column
-    @NonNull
+    @NotNull
     private String name;
 
     @Column
-    @NonNull
+    @NotNull
     private LiverStrength liverStrength;
 
     @Column
-    @NonNull
+    @NotNull
     private int bicepsSize;
 
 }
