@@ -41,30 +41,30 @@ public class CustomerController {
         }
     }
     @PostMapping("/")
-    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customerToSave) {
         try {
-            Customer _customer = customerRepository
-                    .save(new Customer(customer.getName(), customer.getLiverStrength(), customer.getBicepsSize()));
-            return new ResponseEntity<>(_customer, HttpStatus.CREATED);
+            Customer customer = customerRepository
+                    .save(new Customer(customerToSave.getName(), customerToSave.getLiverStrength(), customerToSave.getBicepsSize()));
+            return new ResponseEntity<>(customer, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Customer> updateCustomer(@PathVariable("id") long id, @RequestBody Customer customer) {
+    public ResponseEntity<Customer> updateCustomer(@PathVariable("id") long id, @RequestBody Customer customerToUpdate) {
         Optional<Customer> customerData = customerRepository.findById(id);
         if (customerData.isPresent()) {
-            Customer _customer = customerData.get();
-            _customer.setName(customer.getName());
-            _customer.setLiverStrength(customer.getLiverStrength());
-            _customer.setBicepsSize(customer.getBicepsSize());
-            return new ResponseEntity<>(customerRepository.save(_customer), HttpStatus.OK);
+            Customer customer = customerData.get();
+            customer.setName(customerToUpdate.getName());
+            customer.setLiverStrength(customerToUpdate.getLiverStrength());
+            customer.setBicepsSize(customerToUpdate.getBicepsSize());
+            return new ResponseEntity<>(customerRepository.save(customer), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
+    public ResponseEntity<HttpStatus> deleteCustomer(@PathVariable("id") long id) {
         try {
             customerRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -73,7 +73,7 @@ public class CustomerController {
         }
     }
     @DeleteMapping("/")
-    public ResponseEntity<HttpStatus> deleteAllTutorials() {
+    public ResponseEntity<HttpStatus> deleteAllCustomer() {
         try {
             customerRepository.deleteAll();
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
