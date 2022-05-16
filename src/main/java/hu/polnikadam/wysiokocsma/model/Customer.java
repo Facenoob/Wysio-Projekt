@@ -8,7 +8,6 @@ import javax.persistence.*;
 @Entity
 @Table
 @RequiredArgsConstructor
-@NoArgsConstructor
 @Data
 public class Customer {
 

@@ -1,45 +1,28 @@
 package hu.polnikadam.wysiokocsma.model;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Table(name = "Consumption")
+@Table
+@RequiredArgsConstructor
+@Data
 public class Consumption {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     @ManyToMany
-    @Column(name="Drink")
+    @Column
+    @NotNull
     private List<Drink> drink;
-    @Column(name="NumberOfDrinks")
+
+    @Column
+    @NotNull
     private int numberOfDrinks;
-
-    public Consumption(List<Drink> drink, int numberOfDrinks) {
-        this.drink = drink;
-        this.numberOfDrinks = numberOfDrinks;
-    }
-
-    public Consumption() {
-    }
-
-    public void setDrink(List<Drink> drink) {
-        this.drink = drink;
-    }
-
-    public void setNumberOfDrinks(int numberOfDrinks) {
-        this.numberOfDrinks = numberOfDrinks;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public List<Drink> getDrink() {
-        return drink;
-    }
-
-    public int getNumberOfDrinks() {
-        return numberOfDrinks;
-    }
 }

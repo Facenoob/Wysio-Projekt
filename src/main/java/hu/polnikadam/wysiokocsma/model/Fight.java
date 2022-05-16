@@ -1,69 +1,38 @@
 package hu.polnikadam.wysiokocsma.model;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "Fights")
+@Table
+@RequiredArgsConstructor
+@Data
 public class Fight {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(name ="FightStart")
+
+    @Column
+    @NotNull
     private Date fightStart;
-    @Column(name = "FightEnd")
+
+    @Column
+    @NotNull
     private Date  fightEnd;
+
     @ManyToMany
-    @Column(name = "Fighters")
+    @Column
+    @NotNull
     private List<Customer> fighters;
+
     @ManyToMany
-    @Column(name = "Winner")
+    @Column
+    @NotNull
     private List<Customer> winner;
-
-    public Fight() {
-    }
-
-    public Fight(Date fightStart, Date fightEnd, List<Customer> fighters, List<Customer> winner) {
-        this.fightStart = fightStart;
-        this.fightEnd = fightEnd;
-        this.fighters = fighters;
-        this.winner = winner;
-    }
-
-    public void setFightStart(Date fightStart) {
-        this.fightStart = fightStart;
-    }
-
-    public void setFightEnd(Date fightEnd) {
-        this.fightEnd = fightEnd;
-    }
-
-    public void setFighters(List<Customer> fighters) {
-        this.fighters = fighters;
-    }
-
-    public void setWinner(List<Customer> winner) {
-        this.winner = winner;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public Date getFightStart() {
-        return fightStart;
-    }
-
-    public Date getFightEnd() {
-        return fightEnd;
-    }
-
-    public List<Customer> getFighters() {
-        return fighters;
-    }
-
-    public List<Customer> getWinner() {
-        return winner;
-    }
 }
