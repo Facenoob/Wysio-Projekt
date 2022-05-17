@@ -18,7 +18,7 @@ public class PubCheckIn {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column
     @NotNull
@@ -35,5 +35,5 @@ public class PubCheckIn {
 
     @Column
     @NotNull
-    private boolean detox;
+    private Boolean detox;
 }

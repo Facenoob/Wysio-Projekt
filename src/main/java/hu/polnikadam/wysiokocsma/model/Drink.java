@@ -16,7 +16,7 @@ public class Drink {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column
     @NotNull

@@ -17,7 +17,7 @@ public class Consumption {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @ManyToMany
     @Column
@@ -26,5 +26,5 @@ public class Consumption {
 
     @Column
     @NotNull
-    private int numberOfDrinks;
+    private Integer numberOfDrinks;
 }
