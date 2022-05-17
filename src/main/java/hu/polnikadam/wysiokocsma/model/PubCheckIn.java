@@ -1,7 +1,8 @@
 package hu.polnikadam.wysiokocsma.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -10,7 +11,8 @@ import java.util.List;
 
 @Entity
 @Table
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class PubCheckIn {
 
@@ -33,5 +35,5 @@ public class PubCheckIn {
 
     @Column
     @NotNull
-    private boolean  detox;
+    private boolean detox;
 }

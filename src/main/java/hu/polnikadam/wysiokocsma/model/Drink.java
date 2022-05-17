@@ -1,14 +1,16 @@
 package hu.polnikadam.wysiokocsma.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class Drink {
 
@@ -22,9 +24,9 @@ public class Drink {
 
     @Column
     @NotNull
-    private double  abv;
+    private Double abv;
 
     @Column
     @NotNull
-    private double  volume;
+    private Double volume;
 }

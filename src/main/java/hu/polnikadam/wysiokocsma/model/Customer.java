@@ -2,12 +2,14 @@ package hu.polnikadam.wysiokocsma.model;
 
 
 import lombok.*;
+
 import javax.validation.constraints.NotNull;
 import javax.persistence.*;
 
 @Entity
 @Table
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class Customer {
 
