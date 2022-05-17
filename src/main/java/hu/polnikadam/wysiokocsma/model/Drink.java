@@ -1,54 +1,32 @@
 package hu.polnikadam.wysiokocsma.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "Drinks")
+@Table
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class Drink {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    @Column(name = "Name")
+    private Long id;
+
+    @Column
+    @NotNull
     private String name;
-    @Column(name ="ABV")
-    private double  abv;
-    @Column(name = "Volume")
-    private double  volume;
 
-    public Drink(String name, double abv, double volume) {
-        this.name = name;
-        this.abv = abv;
-        this.volume = volume;
-    }
+    @Column
+    @NotNull
+    private Double abv;
 
-    public Drink() {
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public double getAbv() {
-        return abv;
-    }
-
-    public double getVolume() {
-        return volume;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAbv(double abv) {
-        this.abv = abv;
-    }
-
-    public void setVolume(double volume) {
-        this.volume = volume;
-    }
+    @Column
+    @NotNull
+    private Double volume;
 }

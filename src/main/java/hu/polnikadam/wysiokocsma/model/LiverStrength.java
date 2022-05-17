@@ -1,21 +1,18 @@
 package hu.polnikadam.wysiokocsma.model;
-
 import static java.lang.Double.POSITIVE_INFINITY;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-enum LiverStrength {
-    Babamáj(0.5),
-    Tinimáj(2.5),
-    Egyetemistamáj(3.0),
-    Gyémántmáj(4.0),
-    Fannimáj(POSITIVE_INFINITY);
+@Getter
+@AllArgsConstructor
+public enum LiverStrength {
 
-    private final Double liverStrength;
+    BABY("Babamáj", 0.5),
+    TEEN("Tinimáj", 2.5),
+    UNI_SUTDENT("Egyetemistamáj", 3.0),
+    DIAMOND("Gyémántmáj", 4.0),
+    FANNI("Fannimáj", POSITIVE_INFINITY);
 
-    LiverStrength(Double liverStrength) {
-        this.liverStrength = liverStrength;
-    }
-
-    public Double getLiverStrength() {
-        return liverStrength;
-    }
+    private final String liverName;
+    private final Double alcoholCapacity;
 }

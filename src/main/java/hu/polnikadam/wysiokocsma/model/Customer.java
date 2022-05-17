@@ -2,19 +2,20 @@ package hu.polnikadam.wysiokocsma.model;
 
 
 import lombok.*;
+
 import javax.validation.constraints.NotNull;
 import javax.persistence.*;
 
 @Entity
 @Table
-@RequiredArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column
     @NotNull
@@ -26,6 +27,6 @@ public class Customer {
 
     @Column
     @NotNull
-    private int bicepsSize;
+    private Integer bicepsSize;
 
 }
