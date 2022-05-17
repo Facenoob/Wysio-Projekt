@@ -18,7 +18,7 @@ public class Fight {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column
     @NotNull

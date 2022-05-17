@@ -13,6 +13,6 @@ public enum LiverStrength {
     DIAMOND("Gyémántmáj", 4.0),
     FANNI("Fannimáj", POSITIVE_INFINITY);
 
-    private final String name;
+    private final String liverName;
     private final Double alcoholCapacity;
 }
