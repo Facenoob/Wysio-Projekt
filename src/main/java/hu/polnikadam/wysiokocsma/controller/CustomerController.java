@@ -1,8 +1,6 @@
 package hu.polnikadam.wysiokocsma.controller;
 
 import java.util.List;
-import java.util.Optional;
-
 import hu.polnikadam.wysiokocsma.model.Customer;
 import hu.polnikadam.wysiokocsma.service.CustomerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

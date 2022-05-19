@@ -3,14 +3,9 @@ package hu.polnikadam.wysiokocsma.service;
 import hu.polnikadam.wysiokocsma.model.Customer;
 import hu.polnikadam.wysiokocsma.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CustomerServiceImpl {
@@ -32,7 +27,6 @@ public class CustomerServiceImpl {
         customer.setBicepsSize(customerToSave.getBicepsSize());
         customer.setLiverStrength(customerToSave.getLiverStrength());
         customerRepository.save(customer);
-
     }
 
     public Customer updateCustomer(Long id, Customer customerToUpdate) {
@@ -41,12 +35,10 @@ public class CustomerServiceImpl {
         customerData.setLiverStrength(customerToUpdate.getLiverStrength());
         customerData.setBicepsSize(customerToUpdate.getBicepsSize());
         return customerRepository.save(customerData);
-
     }
 
     public void deleteCustomer(Long id) {
         customerRepository.deleteById(id);
-
     }
 
     public void deleteAllCustomer() {
