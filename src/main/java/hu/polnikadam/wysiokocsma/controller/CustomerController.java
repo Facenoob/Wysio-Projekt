@@ -2,7 +2,7 @@ package hu.polnikadam.wysiokocsma.controller;
 
 import java.util.List;
 import hu.polnikadam.wysiokocsma.model.Customer;
-import hu.polnikadam.wysiokocsma.service.CustomerServiceImpl;
+import hu.polnikadam.wysiokocsma.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerController {
 
     @Autowired
-    private CustomerServiceImpl customerService;
+    private CustomerService customerService;
 
     @GetMapping("/all")
     public ResponseEntity<List<Customer>> getAllCustomer() {
