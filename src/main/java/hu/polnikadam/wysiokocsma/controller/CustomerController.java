@@ -46,7 +46,7 @@ public class CustomerController {
         return new ResponseEntity<>(HttpStatus.GONE);
     }
 
-    @DeleteMapping()
+    @DeleteMapping
     public ResponseEntity<HttpStatus> deleteAllCustomer() {
         customerService.deleteAllCustomer();
         return new ResponseEntity<>(HttpStatus.GONE);
