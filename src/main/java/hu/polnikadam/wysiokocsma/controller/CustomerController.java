@@ -1,6 +1,8 @@
 package hu.polnikadam.wysiokocsma.controller;
 
 import java.util.List;
+
+import hu.polnikadam.wysiokocsma.DTO.CustomerDTO;
 import hu.polnikadam.wysiokocsma.model.Customer;
 import hu.polnikadam.wysiokocsma.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +18,9 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<Customer>> getAllCustomer() {
-        List<Customer> customers = customerService.getAllCustomer();
-        return new ResponseEntity<>(customers, HttpStatus.OK);
+    public List<CustomerDTO> getAllCustomer() {
+        List<CustomerDTO> customers = customerService.getAllCustomer();
+        return customers;
     }
 
     @GetMapping("/{id}")
